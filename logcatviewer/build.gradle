@@ -1,11 +1,13 @@
 apply plugin: 'com.android.library'
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    namespace 'com.fatangare.logcatviewer'
+    compileSdkVersion 32
+    buildToolsVersion "32.0.0"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 22
+        minSdkVersion 24
+        targetSdkVersion 32
     }
 
     buildTypes {
@@ -14,9 +16,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+    buildFeatures {
+        aidl true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/aidl']
+        }
+    }
 }
 dependencies {
-    compile project(':standOut')
+    implementation project(':standOut')
 }
 
 
