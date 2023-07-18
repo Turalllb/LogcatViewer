@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'com.fatangare.logcatviewer'
-    compileSdkVersion 32
-    buildToolsVersion "32.0.0"
+    compileSdkVersion 34
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 32
+        targetSdkVersion 34
     }
 
     buildTypes {
@@ -24,12 +24,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/aidl']
-        }
     }
 }
 dependencies {

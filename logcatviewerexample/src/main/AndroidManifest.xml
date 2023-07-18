@@ -21,4 +21,8 @@
             android:label="LogcatLoggerFloatingView" > </service>
     </application>
 
+    <queries>
+        <package android:name="com.fatangare.logcatlogger.example" />
+    </queries>
+
 </manifest>
