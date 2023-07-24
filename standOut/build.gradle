@@ -1,11 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
 android {
     namespace 'wei.mark.standout'
-    compileSdkVersion 32
-    buildToolsVersion "32.0.0"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
+
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 32
+        targetSdkVersion 33
     }
     buildTypes {
         release {
@@ -19,7 +22,39 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
+
+
+    publishing {
+        singleVariant("release") {
+            // if you don't want sources/javadoc, remove these lines
+            withSourcesJar()
+//            withJavadocJar()
+        }
+    }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                
+                groupId 'wei.mark.standout'
+                artifactId 'standout-window'
+                version '1.0.0'
+            }
+        }
+    }
+}
+
+task comps {
+    afterEvaluate {
+        println("Components: " + components*.name)
+    }
+}
+
+
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
